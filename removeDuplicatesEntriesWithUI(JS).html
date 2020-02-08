@@ -1,0 +1,218 @@
+<!Doctype html>
+<html>
+<meta charset="utf-8"/>
+<head>
+<style>
+.Row
+    {
+	display:flex;
+	position:absolute;
+        top:53%;
+        display: table-row;
+	height:auto;
+	width:250px;
+    }
+    .Cell
+    {
+	display:flex;
+	justify-content:space-evenly;
+	width:110px;
+        border: solid;
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+.Rownew
+    {
+	display:flex;
+	position:absolute;
+        top:53%;
+	left:40%;
+        display: table-row;
+	height:auto;
+	width:250px;
+    }
+.Cellnew
+    {
+	display:flex;
+	justify-content:space-evenly;
+	width:250px;
+        border: solid;
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+
+.e
+		{
+			height:50px;
+			width:250px;
+			background-color:yellow;
+			border:1px solid #95d5f7;
+			text-align:center;
+			display: flex; 
+			justify-content: space-between;
+			align-items: center;
+			font-size:20px;
+			position:absolute;
+			top:45%;
+		}
+		
+
+.enew
+		{
+			height:50px;
+			width:250px;
+			background-color:red;
+			border:1px solid #95d5f7;
+			text-align:center;
+			display: flex; 
+			justify-content: space-between;
+			align-items: center;
+			font-size:20px;
+			position:absolute;
+			left:40%;
+			top:45%;
+			left
+		}
+		
+
+
+
+.container {
+  display: flex;
+  height:45%;
+  width:50%;
+  flex-direction: column;
+  background-color:yellow;
+}
+
+.container > div {
+  background-color: yellow;
+  width: 80%;
+  margin: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+
+.nitin {
+  display: flex;
+  position:absolute;
+  height:5%;
+  width:20%;
+  top:29%;
+  left:16%;
+  justify-content:space-evenly;
+}
+
+</style>
+<script>
+var nameobj = [];
+var namearray = [];
+function display()
+{
+                var x = document.getElementById("textone").value;
+		var y = document.getElementById("texttwo").value;
+	
+                nameobj = {fname:x,lname:y};		
+                namearray.push(nameobj);
+
+	   var i = namearray.length-1;
+	   var k = namearray[i].fname;
+	   var v =  namearray[i].lname;
+	   document.getElementById("op1").innerHTML += k+"<br><br>";
+	   document.getElementById("op2").innerHTML += v+"<br><br>";
+}
+
+var pawar = [];
+function newarray()
+{	
+ debugger;
+ pawar = namearray;
+     var temp = pawar.length-1;
+     for(i=0 ; i<=temp ; i++)
+      {
+       var cnt=0;
+       var k = pawar[i].fname;
+       var v = pawar[i].lname;
+        for(j=i+1 ; j<=temp ; j++)
+         {    
+          var r = pawar[j].fname;
+          var t = pawar[j].lname;
+
+           if((k == r) && (v == t))
+            {
+                cnt++;
+	    }
+         }      
+             if(cnt == 0)
+              {
+               cnt=0;
+	       document.getElementById("op3").innerHTML += k+"<br><br>";
+	       document.getElementById("op4").innerHTML += v+"<br><br>";
+	      }
+
+      }   
+      
+    
+}
+
+
+
+
+</script>
+</head>
+<body>
+
+    <div class="container">
+   
+     <div><h1>Insert details:</h1></div>
+     <div>F-Name:<input type="text" id="textone" /></div>
+     <div>L-Name:<input type="text" id="texttwo" /></div>
+   </div>
+
+    <div class="nitin">
+
+    <div><button type="submit" onclick="display()" value="Submit">SUBMIT</button></div>
+    <div><button type="submit" onclick="newarray()" value="Submit">New-Array</button></div>
+
+   </div>
+ 
+
+   <div class="e" id="emp">
+			<h5>F-Name</h5>
+			<h5>L-Name</h5>
+		</div>
+
+  <div class="Row">
+        <div class="Cell">
+            <p id="op1"></p>
+        </div>
+        <div class="Cell">
+            <p id="op2"></p>
+        </div>
+    </div>
+
+
+<div class="enew" id="emp">
+			<h5>F-Name(new)</h5>
+			<h5>L-Name(new)</h5>
+		</div>
+
+ <div class="Rownew">
+        <div class="Cellnew">
+            <p id="op3"></p>
+        </div>
+        <div class="Cellnew">
+            <p id="op4"></p>
+        </div>
+    </div>
+
+
+</body>
+</html>

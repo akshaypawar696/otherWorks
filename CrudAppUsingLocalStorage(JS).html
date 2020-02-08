@@ -1,0 +1,195 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+.e
+		{
+			height:50px;
+			width:250px;
+			background-color:yellow;
+			border:1px solid #95d5f7;
+			text-align:center;
+			display: flex; 
+			justify-content: space-between;
+			align-items: center;
+			font-size:20px;
+			position:absolute;
+			top:45%;
+		}
+		
+
+
+.f
+		{
+		       
+			height:auto;
+			width:280px;
+			background-color:yellow;
+			border:1px solid red;
+			text-align:center;
+			font-size:20px;
+			position:absolute;
+			top:52%;
+		}
+
+
+
+.container {
+  display: flex;
+  height:45%;
+  width:50%;
+  flex-direction: column;
+  background-color:yellow;
+}
+
+.container > div {
+  background-color: yellow;
+  width: 80%;
+  margin: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+
+.nitin {
+  display: flex;
+  position:absolute;
+  height:5%;
+  width:20%;
+  top:29%;
+  left:16%;
+  justify-content:space-evenly;
+}
+
+
+
+
+.shital {
+  display: flex;
+  position:relative;
+  border:1px solid black;
+  width:30%;
+  top:50%;
+  left:58%;
+}
+
+</style>
+
+
+<script>
+
+
+
+function deleterow()
+{
+ alert("delete fn call");
+  var retrievedData = localStorage.getItem("akshay");
+  var pawar = JSON.parse(retrievedData);
+
+  for(var i = pawar.length - 1; i >= 0; i--)
+   {
+    if(pawar[i] === index)
+     {
+      pawar.splice(i, 1);
+     }
+   }
+  localStorage.setItem("akshay", JSON.stringify(pawar));  
+  location.reload();
+}
+
+
+/*Count the number of rows and display last entry....*****************************************************************************/
+
+var emparray = [];
+
+function display()
+{
+var x=document.getElementById("textone").value;
+var y=document.getElementById("texttwo").value;
+  if (x == "" || y == "") 
+   {
+    alert("Employee Name and ID must be filled out");
+    return false;
+   }
+
+
+ if(typeof(Storage)!=="undefined")
+  {
+                var x = document.getElementById("texttwo");
+		var y = document.getElementById("textone");
+	
+		
+
+                var empobj ={empid:"textone",empname:"texttwo"};
+                emparray.push("empobj");
+                localStorage.setItem("akshay", JSON.stringify(emparray));
+ 
+
+  }
+   else
+    {
+      alert('browser does not suppoort for local storage');
+      return false;
+    } 
+            var i = localStorage.length-1;
+            var k = localStorage.key(i);
+            var v = localStorage.getItem(k);
+            var d3 = "<button onclick="editrow()">Edit</button>";
+	    var d4 = "<button onclick="deleterow()">Delete</button>";
+
+document.getElementById("op").innerHTML += k + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + v + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + d3 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + d4 +"<br/>" ;
+		
+}
+
+
+
+
+
+//********************************************************************************
+
+function resetedata()
+{
+document.getElementById("textone").value= "";
+document.getElementById("texttwo").value= "";
+}
+
+
+function deletels()
+	{
+		localStorage.clear();
+		location.reload();
+	}
+</script>
+</head>
+<body>
+
+    <div class="container">
+   
+     <div><h1>Insert Employee details:</h1></div>
+     <div>Emloyee Name:<input type="text" id="textone" /></div>
+     <div>Employee Id . :<input type="text" id="texttwo" /></div>
+   </div>
+
+    <div class="nitin">
+
+    <div><button type="submit" onclick="display()" value="Submit">SUBMIT</button></div>
+    <div><button type="submit" onclick="resetedata()" value="Submit">Reset</button></div>
+    <button class="btn" type="button" onclick="deletels()">ClearLocalStorage</button></div>
+
+   </div>
+ 
+
+   <div class="e" id="emp">
+			<h5>EMP ID</h5>
+			<h5>Name</h5>
+			<h5>Edit</h5>
+			<h5>Delete</h5>
+		</div>
+
+		<div class="f" id="op"></div>
+
+
+
+
+</body>
+</html>
